@@ -7,7 +7,7 @@
 1. Run `build.sh`
 2. Image tagged `sailfishos-platform-sdk` will be generated
 3. Get a shell with `docker run -it sailfishos-platform-sdk /bin/bash`
-4. Enter in Scratchbox with `sb2 -t SailfishOS-2.2.0.27-armv7hl`
+4. Enter in Scratchbox with `sb2 -t SailfishOS-2.2.0.29-armv7hl`
 
 ## Summary
 
@@ -24,9 +24,9 @@ manually.
 
 This repository contains one script, `build.sh`, that will
 
-1. Download 2.2.0.27 version of the SDK
+1. Download 2.2.0.29 version of the SDK
 2. Create a base image from it
-3. Download 2.2.0.27 `armv7hl` and `i486` rootfs and install them
+3. Download 2.2.0.29 `armv7hl` and `i486` rootfs and install them
 
 As a result, you will get an image that will be ready to use to build for both phones, tablet and
 the emulator.
@@ -57,4 +57,5 @@ You must also be connected to the Internet in order to build the image.
 ## Credits
 
 - [EvilJazz](https://github.com/evilJazz/sailfishos-buildengine) for the inspiration
+- [SfietKonstantin](https://github.com/SfietKonstantin/docker-sailfishos-sdk) for the initial version of scripts
 
