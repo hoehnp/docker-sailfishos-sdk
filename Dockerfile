@@ -1,5 +1,5 @@
-FROM coderus/sailfishos-platform-sdk-base
-MAINTAINER Andrey Kozhevnikov <coderusinbox@gmail.com>
+FROM hoehnp/sailfishos-platform-sdk-base:2.2.1.18
+MAINTAINER Patrick Hoehn <hoehnp@gmx.de>
 
 ARG SDK_VERSION
 ARG TARGET_VERSION
@@ -10,7 +10,15 @@ COPY mer-tooling-chroot /home/nemo/mer-tooling-chroot
 RUN set -ex;\
  chmod +w /etc/sudoers ;\
  echo "nemo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers ;\
- chmod -w /etc/sudoers
+ chmod -w /etc/sudoers 
+
+# change uid and guid to run image on circleci 
+RUN export olduid=$(id -u nemo) ;\
+  export oldgid=$(id -g nemo) ;\
+ usermod -u 1000 nemo; groupmod -g 1000 nemo ;\
+ find / -user $olduid -exec chown -h 1000 {} \; ;\ 
+ find / -group $oldgid -exec chgrp -h 1000 {} \; ;\
+ usermod -g 1000 nemo
 
 USER nemo
 
